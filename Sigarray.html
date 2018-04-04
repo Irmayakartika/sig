@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Praktikum Listener</title>
+    <title>SIG eith Array</title>
 
     <style>
         #map{
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <h1>Contoh Aplikasi Web SIG</h1>
+    <h1>SIG With Array</h1>
     <div id="map"></div>
     <script>
         function initMap(){
@@ -36,11 +36,7 @@
     map.addListener('click',
     function(event){
         marker.setPosition(event.latLng);
-        console.log(marker.position.toString()); //klik marker pada peta yang ada di maps
-                                                 //buka inspect elemet caranya (Ctrl+Shift+I)
-                                                 //liat di konsole ada koordinat muncul saat klik peta 
-                                                 //addListener ini untuk mengerjakan tugas SIG ditambah function push untuk menambahkan data ke array
-                                                 //yang kemarin gak muncul petanya karena copy scrip api key nya terbalik :)
+        console.log(marker.position.toString());
     });   
 
     }
