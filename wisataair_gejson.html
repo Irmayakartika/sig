@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #map{
+            width: 100%;
+            height: 500px;
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjlVTMGy--ZJuO-AwjWxusgylRkPTq9y8&callback=initMap"></script>
+    <script>
+        var map = null;
+        var lampung={lat: -4.558585, lng: 105.406808};
+        var infowindow;
+        
+        var config = {
+        apiKey: "AIzaSyAJbsGldn14gNC5_60Zgen_a8C73iBzzvs",
+        authDomain: "praktikumsig-b4b52.firebaseapp.com",
+        databaseURL: "https://praktikumsig-b4b52.firebaseio.com",
+        projectId: "praktikumsig-b4b52",
+        storageBucket: "praktikumsig-b4b52.appspot.com",
+        messagingSenderId: "971228434464"
+    };
+    firebase.initializeApp(config);
+
+    var db = firebase.database();
+    var dataRef = db.ref('lampung');
+
+    dataRef.on('value', showData, showError);
+    function showData(data) {
+       // console.log(data.val());
+       map.data.addGeoJson(data.val());
+       map.data.setStyle({
+           fillColor: '#cc0000',
+           strokeWeight: 0.5
+       });
+       map.data.addListener('click', function(event){
+           infowindowcontent = event.feature.getProperty('KABKOT');
+           console.log(infowindowcontent);
+           infowindow.setContent(infowindowcontent);
+           infowindow.setPosition(event.latLng);
+           infowindow.open(map);
+       });
+    }
+    function showError(err) {
+        console.log(err);
+    }
+
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'),{
+            zoom: 8,
+            center: lampung
+        });
+        infowindow = new google.maps.InfoWindow();
+    }
+    </script>
+</body>
+</html>
