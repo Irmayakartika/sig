@@ -1,0 +1,222 @@
+<html>
+    <head>
+        <title>Sistem Informasi Geografis</title>
+        <style>
+		.wrap{
+	background: blue;
+	width: 1350px;
+	height: 500px;
+}
+ 
+/*bagian header*/
+.wrap .header{
+	background:  blue;
+	/*height: 50px;*/
+	padding: 2px 10px;
+}
+ 
+/*akhir header*/
+ 
+/*bagian menu*/
+.wrap .menu{
+	background: #00FFFF;
+}
+ 
+.wrap .menu ul{
+	padding: 0;
+	margin: 0;
+	background: #00BFFF;
+	overflow: hidden;
+}
+ 
+.wrap .menu ul li{
+	float: left;
+	list-style-type: none;
+	padding: 10px;
+}
+
+ 
+.clear{
+	clear: both;
+}
+ 
+.badan{
+	height: 450px;
+}
+
+.wrap .badan .sidebar{
+	background: #FFEBCD;
+	float: left;	
+	width: 20%;
+	height: 100%;
+}
+ 
+ 
+.wrap .badan .content{
+	background-color : white }
+	#map {
+		width: 80%;
+		height: 450px;
+	}
+	#header{
+		height:25px;
+		width:100%;
+		background-color:rgb(0, 153, 255);
+	}
+	#footer{
+		height : 50px;
+		width :100%;
+		background-color:c;
+	}
+	#pil{
+		height : 100px;
+		width : 480px;
+		float : right;
+		background-color: #EEEEEE;
+	}
+        </style>
+    </head>
+    <body>
+
+			<div class="wrap">
+					<div class="header">			
+						<h1><center><img src=lpg.jpg height= "50" width= "70"><font color = "white" >Persebaran Potensi Wisata Air Provinsi Lampung</h1></font></center></div>
+					<div class="menu">
+						<ul>
+							<li><a href="#"><font color="black">Home</a></li>
+							<li><a href="wisataair_gejson.html"><font color="black">Tentang Lampung</a></li>
+							<li><a href="#"><font color="black">Tentang Kita</a></li>
+							<li><a href="#"><font color="black">Cari</a></li>				
+						</ul>
+					</div>
+					<div class="badan">			
+						<div class="sidebar">
+							<h2>Kategori :</h2>
+							<ul>
+								<li><a href="#">Kabupaten</a></li>
+								<ul>
+									<li><a href="Wisata Air BDL.html">Bandar Lampung</a></li>
+									<li><a href="Wisata Air Lampung Barat.html">Lampung Barat</a></li>
+									<li><a href="Wisata Air Lampung Selatan.html">Lampung Selatan</a></li>
+									<li><a href="Wisata Air Lampung Tengah.html">Lampung Tengah</a></li>
+									<li><a href="Wisata Air Lampung Timur.html">Lampung Timur</a></li>
+									<li><a href="Wisata Air Lampung Utara.html">Lampung Utara</a></li>
+									<li><a href="Wisata Air Mesuji.html">Mesuji</a></li>
+									<li><a href="Wisata Air Metro.html">Metro</a></li>
+									<li><a href="Wisata Air PSW.html">Pesawaran</a></li>
+									<li><a href="Wisata Air Pesisir Barat.html">Pesisir Barat</a></li>
+									<li><a href="Wisata Air Pringsewu.html">Pringsewu</a></li>
+									<li><a href="Wisata Air Tanggamus.html">Tanggamus</a></li>
+									<li><a href="Wisata Air Tulang Bawang.html">Tulang Bawang</a></li>
+									<li><a href="Wisata Air Tulang Bawang Barat.html">Tulang Bawang Barat</a></li>
+									<li><a href="Wisata Air Way Kanan.html">Way Kanan</a></li>
+								</ul>
+								<li><a href="#">Jenis Wisata Air</a></li>
+								<ul>
+									<li><a href="#">Pantai</a></li>
+									<li><a href="#">Air Terjun</a></li>
+									<li><a href="#">Pemandian Air Panas</a></li>
+									<li><a href="#">Bendungan</a></li>
+								</ul>				
+							</ul>
+						</div>
+						<div class="content">
+								<div id="map"></div>
+    <script>
+function initMap() {
+var lampung={lat: -4.558585, lng: 105.406808};
+ var map=new google.maps.Map(document.getElementById('map'),{zoom:7,center:lampung});
+ console.log(map);
+ var infowindow = new google.maps.InfoWindow();
+ var contentString = '<h3>PROVINSI LAMPUNG</h3><hr>' +
+      '<h5> Luas 34.623,80 km2, jumlah penduduk 9.543.231 Jiwa</h5>';
+      infowindow.setContent(contentString);
+
+ var marker=new google.maps.Marker({position:lampung,map:map});
+    marker.addListener('click',function(){
+ infowindow.open(map,marker);
+ });
+  var infoWin = new google.maps.InfoWindow();
+  var markers = locations.map(function(location, i) {
+    var marker = new google.maps.Marker({
+      position: location
+    });
+    google.maps.event.addListener(marker, 'click', function(evt) {
+      infoWin.setContent(location.info);
+      infoWin.open(map, marker);
+    })
+    return marker;
+  });
+
+  // Add a marker clusterer to manage the markers.
+  var markerCluster = new MarkerClusterer(map, markers, {
+    imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+  });
+
+}
+var locations = [
+	{lat: -5.557550,lng: 105.252148,
+	info: '<h3>Pantai Sari Ringgung</h3><hr>'+'<p><a href="http://pantaisariringgung.com" target="blank">http://pantaisariringgung.com</a>'}, 
+	{lat: -5.535672,lng: 105.069675,	
+	info: '<h3>Air Terjun Anglo</h3><hr>'+'<p><a href="https://www.jelajahlampung.com" target="blank">https://www.jelajahlampung.com</a>'}, 
+	{lat: -4.668682,lng: 104.417083,
+	info: '<h3>Curup Gangsa</h3><hr>'+'<p><a href="www.jejakpiknik.com/curup-gangsa" target="blank">www.jejakpiknik.com/curup-gangsa</a>'}, 
+	{lat: -4.859700,lng: 104.386280,
+	info: '<h3>Air Terjun Putri Malu</h3><hr>'+'<p><a href="http://wisata-tanahair.com/2016/08/wisata-air-terjun-putri-malu-lampung.htm" target="blank">http://wisata-tanahair.com/2016/08/wisata-air-terjun-putri-malu-lampung.htm</a>'}, 
+	{lat: -5.314673,lng: 103.993745,	
+	info: '<h3>Pantai Tanjung Setia</h3><hr>'+'<p><a href="https://id.wikipedia.org/wiki/Krui,_Lampung_Barat" target="blank">https://id.wikipedia.org/wiki/Krui,_Lampung_Barat</a>'},
+	{lat: -5.114945,lng: 103.850003,
+	info: '<h3>Pulau Pisang</h3><hr>'+'<p><a href=" http://www.nativeindonesia.com/pulau-pisang-lampung" target="blank"> http://www.nativeindonesia.com/pulau-pisang-lampung</a>'},
+	{lat: -5.778452,lng: 105.663668,	
+	info: '<h3>Air Terjun Way Kalam</h3><hr>'+'<p><a href=" http://pokdarwis-wayterjun.blogspot.co.id/2015/07/pesona-air-terjun-way-kalam.html" target="blank"> http://pokdarwis-wayterjun.blogspot.co.id/2015/07/pesona-air-terjun-way-kalam.html</a>'},
+	{lat: -5.485156,lng: 104.689205,
+	info: '<h3>Air Terjun Way Lalaan</h3><hr>'+'<p><a href="https://www.eviindrawanto.com/2012/10/pesona-air-terjun-way-lalaan-lampung" target="blank">https://www.eviindrawanto.com/2012/10/pesona-air-terjun-way-lalaan-lampung</a>'},
+	{lat: -5.674112,lng: 105.241925,
+	info: '<h3>Pulau Pahawang</h3><hr>'+'<p><a href="http://www.nativeindonesia.com/pulau-pahawang/" target="blank">http://www.nativeindonesia.com/pulau-pahawang/</a>'},
+	{lat: -4.979423,lng: 104.685139,
+	info: '<h3>Air Terjun Sukaemi</h3><hr>'+'<p><a href="http://www.infokyai.com/2017/07/air-terjun-curup-sukaemi-lampung-utara.html" target="blank">http://www.infokyai.com/2017/07/air-terjun-curup-sukaemi-lampung-utara.html</a>'},
+	{lat: -5.251128,lng: 104.779057,
+	info: '<h3>Bendungan Batu Tegi</h3><hr>'+'<p><a href="http://pariwisatalampung.com/27-dest-map/146-bendungan-batu-tegi.html" target="blank">http://pariwisatalampung.com/27-dest-map/146-bendungan-batu-tegi.html</a>'},
+	{lat: -4.734385,lng: 104.853640,
+	info: '<h3>Bendungan Tirta Shinta</h3><hr>'+'<p><a href="http://www.lampost.co/berita-asyiknya-berlibur-ke-bendungan-tirta-shinta-wonomarto" target="blank">http://www.lampost.co/berita-asyiknya-berlibur-ke-bendungan-tirta-shinta-wonomarto</a>'},
+	{lat: -5.430803,lng: 105.211007,
+	info: '<h3>Air Terjun Batu Putu</h3><hr>'+'<p><a href="http://www.infokyai.com/2016/05/wisata-alam-batu-putu-tempat-wisata-di.html" target="blank">http://www.infokyai.com/2016/05/wisata-alam-batu-putu-tempat-wisata-di.html</a>'},
+	{lat: -5.124652,lng: 104.810442,
+	info: '<h3>Air Terjun Kota Batu</h3><hr>'+'<p><a href="https://travel.kompas.com/read/2015/08/30/110300227/Menikmati.Keindahan.Air.Terjun.di.Desa.Kota.Batu" target="blank">https://travel.kompas.com/read/2015/08/30/110300227/Menikmati.Keindahan.Air.Terjun.di.Desa.Kota.Batu</a>'},
+	{lat: -5.501407,lng: 104.649310,
+	info: '<h3>Air Terjun Lembah Pelangi</h3><hr>'+'<p><a href="https://travel.kompas.com/read/2017/12/19/080200827/pelangi-itu-begitu-dekat-di-air-terjun-lembah-pelangi-" target="blank">https://travel.kompas.com/read/2017/12/19/080200827/pelangi-itu-begitu-dekat-di-air-terjun-lembah-pelangi-</a>'},
+	{lat: -5.813683,lng: 105.621925,
+	info: '<h3>Air Terjun Way Tayas</h3><hr>'+'<p><a href=" http://www.nauzah.com/2017/11/air-terjun-way-tayas-kab-lampung.html,    http://" target="blank"> http://www.nauzah.com/2017/11/air-terjun-way-tayas-kab-lampung.html,    http://</a>'},
+	{lat: -5.514255,lng: 105.2633095,
+	info: '<h3>Pantai Mutun</h3><hr>'+'<p><a href="http://pariwisatalampung.com/220-pulau-tangkil.html" target="blank">http://pariwisatalampung.com/220-pulau-tangkil.html</a>'},
+	{lat: -5.755588,lng: 105.057514,
+	info: '<h3>Pantai Gigi Hiu</h3><hr>'+'<p><a href="https://ketahui.com/wisata-lampung-menikmati-indahnya-alam-pantai-pegadungan-gigi-hiu-melalui-lensa-kamera" target="blank">https://ketahui.com/wisata-lampung-menikmati-indahnya-alam-pantai-pegadungan-gigi-hiu-melalui-lensa-kamera</a>'},
+	{lat: -5.771579,lng: 105.109388,
+	info: '<h3>Teluk Kiluan</h3><hr>'+'<p><a href="http://www.wisatatelukkiluan.com" target="blank">http://www.wisatatelukkiluan.com/</a>'},
+	{lat: -5.092205,lng: 104.724823,
+	info: '<h3>Air Terjun Tujuh Marga Jaya</h3><hr>'+'<p><a href="https://www.google.co.id/amp/s/wisataalamlampung.wordpress.com/2016/10/23/air-terjun-curug-tujuh-tempat-wisata-lampung-tengah/amp/" target="blank">https://www.google.co.id/amp/s/wisataalamlampung.wordpress.com/2016/10/23/air-terjun-curug-tujuh-tempat-wisata-lampung-tengah/amp/</a>'},
+	{lat: -5.370690,lng: 105.818726,
+	info: '<h3>Pantai Karang Mas</h3><hr>'+'<p><a href="http://www.jelajahlampung.com/2017/12/pantai-kerang-emas-lampung-timur.html?m=1" target="blank">http://www.jelajahlampung.com/2017/12/pantai-kerang-emas-lampung-timur.html?m=1</a>'},
+	{lat: -5.850144,lng: 105.682777,
+	info: '<h3>Pulau Mengkudu</h3><hr>'+'<p><a href="http://traveling.bisnis.com/read/20160610/224/556376/pulau-mengkudu-surga-bahari-di-lampung-selatan" target="blank">http://traveling.bisnis.com/read/20160610/224/556376/pulau-mengkudu-surga-bahari-di-lampung-selatan</a>'},
+	{lat: -5.571681,lng: 105.244955,
+	info: '<h3>Pantai Dewi Mandapa</h3><hr>'+'<p><a href="https://penginapan.net/pantai-dewi-mandapa-wisata-bahari-dengan-pemandangan-hutan-bakau-mempesona-di-lampung/" target="blank">https://penginapan.net/pantai-dewi-mandapa-wisata-bahari-dengan-pemandangan-hutan-bakau-mempesona-di-lampung/</a>'},
+	{lat: -5.305367,lng: 105.288196,
+	info: '<h3>Slanik Water Park</h3><hr>'+'<p><a href=" https://www.jejakpiknik.com/slanik-waterpark/" target="blank"> https://www.jejakpiknik.com/slanik-waterpark/</a>'},
+	{lat: -5.505230,lng: 104.636385,
+	info: '<h3>Pantai Terbaya</h3><hr>'+'<p><a href="http://www.jelajahlampung.com/2016/06/pantai-terbaya-tanggamus.html" target="blank">http://www.jelajahlampung.com/2016/06/pantai-terbaya-tanggamus.html</a>'}
+];
+
+google.maps.event.addDomListener(window, "load", initMap);
+
+   </script>
+</body>
+<script async defer 
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjlVTMGy--ZJuO-AwjWxusgylRkPTq9y8&callback=initMap"></script>
+<script src="src/markerclusterer.js">
+</script>
+<marquee><b>Fanni Lufiana(1617051022)_Irmaya Kartika(1617051030)_Ni Putu Ayu Anesca(1617051126)</b></marquee>
+	<div id=footer>
+		</div>
+  </div>
+</html>

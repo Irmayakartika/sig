@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <title>Wisata Air Lampung Utara</title>
+	<style>
+     html,body,#mapp {
+        background-color:#00BFFF;
+          width: 100%;
+          height: 400px;
+      }
+	</style>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+     <center>
+     <h1><font color= "white">Wisata Air Kabupaten Lampung Utara</h1></font>
+        </center>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+
+var map;
+var infoWindow;
+
+function initialize() {
+  var mapOptions = {
+    zoom: 8,
+    center: new google.maps.LatLng(-4.8133905, 104.7520939),
+  };
+  map = new google.maps.Map(document.getElementById('mapp'), mapOptions);
+  infoWindow = new google.maps.InfoWindow();
+  var infowindow = new google.maps.InfoWindow();
+  var contentString = '<h3>INFO MARKER: Kabupaten Lampung Utara adalah salah satu kabupaten di Provinsi Lampung, Indonesia. Ibu Kota kabupaten ini terletak di Kota Kotabumi. Kabupaten ini memiliki luas wilayah 2.725,63 km2 dan berpenduduk sebesar 630.532 jiwa.</h3><hr>'+
+                      '<h4>LAMPUNG UTARA</h4>';
+  infowindow.setContent(contentString);
+  var marker = new google.maps.Marker({position:new google.maps.LatLng(-4.8133905, 104.7520939)});
+  marker.addListener('click',function(){
+  infowindow.open(map,marker);
+  });
+	marker.setMap(map);
+  
+  var wisata = new google.maps.Polygon({
+		paths: [
+  	new google.maps.LatLng(-4.979423, 104.685139), //air terjun sukaemi
+    new google.maps.LatLng(-4.734385, 104.853640), //bendungan tirta shinta
+    new google.maps.LatLng(-5.963103, 104.734585), //air terjun klawas
+		], 
+    strokeWeight: 3,
+		fillColor: '#12A0C9',
+		fillOpacity: 0.30,
+		strokeColor: '#12A0C9',
+		strokeOpacity: 0.7,
+		name: '<center><h2>WISATA AIR KABUPATEN LAMPUNG UTARA<h2><hr>'+
+				  '<center>Jumlah Wisata Air : 3<br></center>', 
+		map: map
+	  });
+	  google.maps.event.addListener(wisata, 'click', showArrays);
+
+  var marker1 = new google.maps.Marker({position:new google.maps.LatLng(41.8661, -88.1070)});
+   marker1.setMap(map);
+ 
+}
+function showArrays(event) {
+  var vertices = this.getPath();
+  var contentString = '<b>' + this.name + '</b>';
+  infoWindow.setPosition(event.latLng);
+  infoWindow.setContent(contentString);
+  infoWindow.open(map);
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+  </head>
+  <style>
+  .footer {
+    width:auto;
+    height: 4px;
+    background-color:antiquewhite;
+    color:darkcyan;
+    padding:15px;
+}
+</style>
+  <body bgcolor=#008080>
+        <div id="mapp"></div>
+                </body>
+</html>
