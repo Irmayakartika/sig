@@ -41,7 +41,7 @@ function initialize() {
 		paths: [
   	new google.maps.LatLng(-5.370690, 105.818726), //pantai karang mas
     new google.maps.LatLng(-5.296742, 105.736635), //kali aro
-    new google.maps.LatLng(-5.302094, 105.744502), //wterboom tirta kencana
+    new google.maps.LatLng(-5.302094, 105.744502), //waterboom tirta kencana
     new google.maps.LatLng(-5.161648, 105.647429), //air terjun labuhan ratu
 		], 
     strokeWeight: 3,
@@ -50,7 +50,7 @@ function initialize() {
 		strokeColor: '#12A0C9',
 		strokeOpacity: 0.7,
 		name: '<center><h2>WISATA AIR KABUPATEN LAMPUNG TIMUR<h2><hr>'+
-				  '<center>Jumlah Wisata Air : 4 <br></center>', 
+				  '<center>Jumlah Wisata Air : 4 <br></center>'+'Pantai karang mas,Kali aro,Waterboom tirta kencana,Air terjun labuhan ratu' , 
 		map: map
 	  });
 	  google.maps.event.addListener(wisata, 'click', showArrays);
@@ -81,4 +81,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
   <body bgcolor=#008080>
         <div id="mapp"></div>
                 </body>
+
+                <div>
+                  <a href="menu wisata air.html" style="text-decoration: none; color: #fff; font-family: arial; font-size: 15px; background: #5F9EA0; margin-top:1.5px; padding: 10.5px 10px; border-radius: 4px;">Back</a>
+              </div>
 </html>
