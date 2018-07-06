@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <title>Jenis Wisata Air</title>
+	<style>
+     html,body,#mapp {
+        background-color:#00BFFF;
+          width: 100%;
+          height: 500px;
+      }
+	</style>
+  <head>
+      <!DOCTYPE html> 
+      <html> 
+      <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width"> 
+        <title>Jenis Wisata Air</title> 
+        <link rel="stylesheet" type="text/css" href="gaya.css">
+      </head>
+      
+      <body>
+      <body bgcolor = #00BFFF>
+      <center><font size="50" face="verdana">Jenis Wisata Air</font></center>
+          <nav id="menu">
+          <ul>
+             <div id="heading">
+              <h1><img src=lpg.jpg height= "60" width= "110"><font color = "#00BFFF" face="roboto">Beautiful Lampung</h1></font></div>
+                  <li><a href="airterjun.html">Air Terjun</a></li>
+                  <li><a href="pantai.html">Pantai/Pulau</a></li>
+                  <li><a href="bendungan.html">Bendungan</a></li>
+                  <li><a href="waterpark.html">Water Park</a></li>
+          </ul>
+      </nav>
+      </body>
+      <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+      <body> 
+          <div id="kotak">
+              <div id="map" style="width:100%;height:500px;"></div>
+          </div>   
+      </body> 
+      
+      <script>
+      
+      function initialize(){
+          var mapOptions = {
+              zoom:7,
+              center: new google.maps.LatLng(-4.558585, 105.406808),
+          };
+          map = new google.maps.Map(document.getElementById('map'), mapOptions);
+          
+          infoWindow = new google.maps.InfoWindow();
+          var infowindow = new google.maps.InfoWindow();
+          
+          var contentString;
+          infowindow.setContent(contentString);
+        
+          var marker = new google.maps.Marker();
+          marker.addListener('click',function(){
+              infowindow.open(map,marker);
+          });
+          marker.setMap(map);
+          
+          var infoWin = new google.maps.InfoWindow();
+          var labels = 'Lampung';
+              
+          var markers = locations.map(function(location, i) {
+              var marker = new google.maps.Marker({
+                  position: location,
+                  
+              });
+              google.maps.event.addListener(marker, 'click', function(evt) {
+                  infoWin.setContent(location.info);
+                  infoWin.open(map, marker);
+              })
+              return marker;
+          }); 
+          
+          console.log(locations);
+          console.log(markers);
+      
+          var markerCluster = new MarkerClusterer(map, markers,
+              {imagePath: 'images/m'});
+              
+          var d = markerCluster.distanceBetweenPoints_(markers[2].getPosition(),markers[4].getPosition());
+          console.log(markerCluster.getCalculator());
+          }
+          function showArrays(event) {
+              var vertices = this.getPath();
+              var contentString = '<b>' + this.name + '</b>';
+              infoWindow.setPosition(event.latLng);
+              infoWindow.setContent(contentString);
+              infoWindow.open(map);
+          }
+          google.maps.event.addDomListener(window, 'load', initialize);
+      
+        var locations = [
+        {lat: -5.251128,lng: 104.779057,
+        info: '<h3>Bendungan Batu Tegi</h3><hr>'+'<p><a href="http://pariwisatalampung.com/27-dest-map/146-bendungan-batu-tegi.html" target="blank">http://pariwisatalampung.com/27-dest-map/146-bendungan-batu-tegi.html</a>'},
+        {lat: -4.734385,lng: 104.853640,
+        info: '<h3>Bendungan Tirta Shinta</h3><hr>'+'<p><a href="http://www.lampost.co/berita-asyiknya-berlibur-ke-bendungan-tirta-shinta-wonomarto" target="blank">http://www.lampost.co/berita-asyiknya-berlibur-ke-bendungan-tirta-shinta-wonomarto</a>'},
+        ]
+        </script>
+      
+      <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZB9ZJU2sial0Lcy25X2Rv0bti9HlFd1o&callback= ap"></script> 
+      <script>
+              var map = null;
+                 var lampung={lat: -4.558585, lng: 105.406808};
+                 var infowindow;
+                 
+                 var config = {
+                 apiKey: "AIzaSyAJbsGldn14gNC5_60Zgen_a8C73iBzzvs",
+                 authDomain: "praktikumsig-b4b52.firebaseapp.com",
+                 databaseURL: "https://praktikumsig-b4b52.firebaseio.com",
+                 projectId: "praktikumsig-b4b52",
+                 storageBucket: "praktikumsig-b4b52.appspot.com",
+                 messagingSenderId: "971228434464"
+             };
+             firebase.initializeApp(config);
+         
+             var db = firebase.database();
+             var dataRef = db.ref('lampung');
+         
+             dataRef.on('value', showData, showError);
+             function showData(data) {
+                // console.log(data.val());
+                map.data.addGeoJson(data.val());
+                map.data.setStyle({
+                    fillColor: '#00FFFF',
+                    strokeWeight: 0.5
+                });
+                map.data.addListener('click', function(event){
+                    infowindowcontent = event.feature.getProperty('KABKOT');
+                    console.log(infowindowcontent);
+                    infowindow.setContent(infowindowcontent);
+                    infowindow.setPosition(event.latLng);
+                    infowindow.open(map);
+                });
+             }
+              function showError(err){
+                  console.log(err);
+              }
+              function initMap(){
+                  map = new google.maps.Map(document.getElementById('map'),{
+                      zoom: 7,
+                      center: center
+                  });
+                  infowindow = new google.maps.InfoWindow();
+              }
+          </script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjlVTMGy--ZJuO-AwjWxusgylRkPTq9y8&callback=initMap"></script>
+      <script src="src/markerclusterer.js">
+      </script>
+      <marquee style="margin-bottom:20px"><b>Fanni Lufiana(1617051022)_Irmaya Kartika(1617051030)_Ni Putu Ayu Anesca(1617051126)</b></marquee>
+      <div>
+        <a href="jeniswisata.html" style="text-decoration: none; color: #fff; font-family: arial; font-size: 15px; background: #5F9EA0; margin-top:5px; padding: 10.5px 10px; border-radius: 4px;">Kembali</a>
+    </div>
+      </html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" type="text/css" href="gaya.css">
+  <head>
+    <title>Custom Legend</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+      #legend {
+        font-family: Arial, sans-serif;
+        background: #fff;
+        padding: 10px;
+        margin: 10px;
+        border: 3px solid #000;
+      }
+      #legend h3 {
+        margin-top: 0;
+      }
+      #legend img {
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <body bgcolor = #00BFFF>
+<center><h2><font size="100" face="verdana">SIG Persebaran Wisata Air Lampung</font></h2></center>
+    <nav id="menu">
+    <ul>
+       <div id="heading">
+        <h1><img src=lpg.jpg height= "60" width= "110"><font color = "#00BFFF" face="roboto">Beautiful Lampung</h1></font></div>
+            <li><a href="baru.html">Beranda</a></li>
+            <li><a href="petalampung.html">Lampung </a></li>
+            <li><a href="poligon.html">Lihat Poligon</a></li>
+            <li><a href="jeniswisata.html">Jenis Wisata</a></li>
+            <li><a href="jaraktempuh.html">Jarak Tempuh</a></li>
+            <li><a href="overlay.html">Overlay</a></li>
+            <li><a href="legend.html">Legend</a></li>
+    </ul>
+</nav>
+
+    <div id="map"></div>
+    <div id="legend"><h3>Legend</h3></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: new google.maps.LatLng(-4.558585, 105.406808),
+          mapTypeId: 'roadmap'
+        });
+
+        var iconBase = 'images/';
+        var icons = {
+          parking: {
+            name: 'Air Terjun',
+            icon: iconBase + 'air terjun1.jpg'
+          },
+          parking1: {
+            name: 'Waterpark',
+            icon: iconBase + 'waterpark.jfif'
+          },
+          parking2: {
+            name: 'Bendungan',
+            icon: iconBase + 'bendungan1.jpg'
+          },
+          info: {
+            name: 'Polygon',
+            icon: iconBase + 'Pantai.jpg'
+          }
+        };
+
+        var features = [
+          {
+            position: new google.maps.LatLng(-5.557550, 105.252148),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-5.535672, 105.069675),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-4.668682, 104.417083),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-4.859700, 104.386280),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-5.192273, 103.930446),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-5.114945, 103.850003),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-5.778452, 105.663668),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-5.485156, 104.689205),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-5.674112, 105.241925),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-4.979423, 104.685139),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-5.251128, 104.779057),
+            type: 'parking2'
+          }, {
+            position: new google.maps.LatLng(-4.734385, 104.853640),
+            type: 'parking2'
+          }, {
+            position: new google.maps.LatLng(-5.430803, 105.211007),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-5.124652, 104.810442),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-5.501407, 104.649310),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-5.813683, 105.621925),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-5.514255, 105.2633095),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-5.755588, 105.057514),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-5.771579, 105.109388),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-5.092205, 104.724823),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(-5.370690, 105.818726),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-5.850144, 105.682777),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-5.571681, 105.244955),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-5.305367, 105.288196),
+            type: 'parking1'
+          }, {
+            position: new google.maps.LatLng(-5.505230, 104.636385),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-5.415640, 105.230955),
+            type: 'parking1'
+          }, {
+            position: new google.maps.LatLng(-5.530294, 105.357556),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-5.561339, 105.3408573),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(-5.445760, 105.247983),
+            type: 'parking1'
+          }
+        ];
+
+        // Create markers.
+        features.forEach(function(feature) {
+          var marker = new google.maps.Marker({
+            position: feature.position,
+            icon: icons[feature.type].icon,
+            map: map
+          });
+        });
+
+        var legend = document.getElementById('legend');
+        for (var key in icons) {
+          var type = icons[key];
+          var name = type.name;
+          var icon = type.icon;
+          var div = document.createElement('div');
+          div.innerHTML = '<img src="' + icon + '"> ' + name;
+          legend.appendChild(div);
+        }
+
+        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjlVTMGy--ZJuO-AwjWxusgylRkPTq9y8&callback=initMap">
+    </script>
+  </body>
+</html>

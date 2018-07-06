@@ -1,0 +1,227 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width"> 
+  <title>Jarak Tempuh Wisata Air<code>setPanel()</code></title>
+  <link rel="stylesheet" type="text/css" href="gaya.css">
+  <style>
+        #map {
+          height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+        #floating-panel {
+          position: absolute;
+          top: 10px;
+          left: 25%;
+          z-index: 5;
+          background-color: white;
+          padding: 5px;
+          border: 1px solid #1E90FF;
+          text-align: center;
+          font-family: 'Roboto','sans-serif';
+          line-height: 30px;
+          padding-left: 10px;
+        }
+        #right-panel {
+          font-family: 'Roboto','sans-serif';
+          line-height: 30px;
+          padding-left: 10px;
+        }
+  
+        #right-panel select, #right-panel input {
+          font-size: 15px;
+        }
+  
+        #right-panel select {
+          width: 100%;
+        }
+  
+        #right-panel i {
+          font-size: 12px;
+        }
+        #right-panel {
+          height: 100%;
+          float: right;
+          width: 390px;
+          overflow: auto;
+        }
+        #map {
+          margin-right: 400px;
+        }
+        #floating-panel {
+          background: white;
+          padding: 5px;
+          font-size: 14px;
+          font-family: Arial;
+          border: 1px solid #1E90FF;
+          box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+          display: none;
+        }
+        @media print {
+          #map {
+            height: 500px;
+            margin: 0;
+          }
+          #right-panel {
+            float: none;
+            width: auto;
+          }
+        }
+        #floating-panell {
+          position:left;
+          top: 10px;
+          left: 25%;
+          z-index: 5;
+          background-color: #1E90FF;
+          padding: 5px;
+          border: 1px solid #999;
+          text-align: center;
+          font-family: 'Roboto','sans-serif';
+          line-height: 30px;
+          padding-left: 10px;
+        }
+        .footer {
+                  width:auto;
+                  height: 10px;
+                  background-color:#1E90FF;
+                  color:white;
+                  padding:20px;
+        }
+      </style>
+</head>
+<body>
+<body bgcolor = #00BFFF>
+<center><font size="100" face="verdana">Jarak & Waktu Tempuh Wisata Air dari Pusat Kota</font></center>
+    <nav id="menu">
+    <ul>
+       <div id="heading">
+        <h1><img src=lpg.jpg height= "60" width= "110"><font color = "#00BFFF" face="roboto">Beautiful Lampung</h1></font></div>
+            <li><a href="baru.html">Beranda</a></li>
+            <li><a href="petalampung.html">Lampung </a></li>
+            <li><a href="poligon.html">Lihat Poligon</a></li>
+            <li><a href="jeniswisata.html">Jenis Wisata</a></li>
+            <li><a href="jaraktempuh.html">Jarak Tempuh</a></li>
+            <li><a href="overlay.html">Overlay</a></li>
+            <li><a href="legend.html">Legend</a></li>
+    </ul>
+</nav>
+</body>
+<body>
+    <div id="floating-panel">
+      <strong>Pusat Kota:</strong>
+      <select id="start">
+        <option value="Bandar Lampung, Kota Bandar Lampung, Lampung">Bandar Lampung</option>
+        <option value="Blambangan Umpu, Kabupaten Way Kanan, Lampung ">Blambangan Umpu</option>
+        <option value="Gedung Tataan, Kabupaten Pesawaran, Lampung ">Gedong Tataan</option>
+        <option value="Gunung Sugih, Kabupaten Lampung Tengah, Lampung">Gunung Sugih</option>
+        <option value="Kalianda, Kabupaten Lampung Selatan, Lampung ">Kalianda</option>
+        <option value="Kotaagung, Kabupaten Tanggamus, Lampung">Kota Agung</option>
+        <option value="Kotabumi, Kabupaten Lampung Utara, Lampung">Kota Bumi</option>
+        <option value="Lampung Barat, Lampung ">Kota Liwa</option>
+        <option value="Kota Metro, Lampung">Kota Metro</option>
+        <option value="Krui, Pesisir Barat, Lampung ">Krui</option> 
+        <option value="Menggala, Kabupaten Tulangbawang, Lampung">Menggala</option>
+        <option value="Mesuji, Kabupaten Mesuji, Lampung">Mesuji</option>   
+        <option value="Pringsewu, Kabupaten Pringsewu, Lampung">Pringsewu</option>    
+        <option value="Sukadana, Kabupaten Lampung Timur, Lampung">Sukadana</option>
+        <option value="Tulang Bawang Tengah, Kabupaten Tulangbawang Barat, Lampung">Tulang Bawang Tengah</option>
+        </select>
+        
+      <br>
+      <strong>Tujuan Wisata Air:</strong>
+      <select id="end">
+            <option value="Pantai Sari Ringgung, Kabupaten Pesawaran, Lampung">Pantai Sari Ringgung</option>
+            <option value="Air Terjun Anglo, Gunung Rejo, Kabupaten Pesawaran, Lampung">Air Terjun Anglo</option>
+            <option value="Wisata Air Terjun Curup Gangsa, Kota Way, Kabupaten Way Kanan, Lampung">Curup Gangsa</option>
+            <option value="Air Terjun Putri Malu, Hutan Register 24, Kabupaten Way Kanan, Lampung">Air Terjun Putri Malu</option>
+            <option value="pantai krui lambar, Kampung Jawa, Lampung Barat, Lampung">Pantai Krui</option>
+            <option value="Pulau Pisang, Pesisir Barat, Lampung">Pulau Pisang</option>
+            <option value="Air Terjun Way Kalam, Way Kalam, Kabupaten Lampung Selatan, Lampung">Air Terjun Way Kalam</option>
+            <option value="Air Terjun Way Lalaan, Kedamaian, Kabupaten Tanggamus, Lampung">Air Terjun Way Lalaan</option>
+            <option value="Pahawang Kecil, Pulau Pahawang, Kabupaten Pesawaran, Lampung">Pulau Pahawang</option>
+            <option value="Air Terjun Sukaemi, Karang Waringin, Kabupaten Lampung Utara, Lampung">Air Terjun Sukaemi</option>
+            <option value="Batu Tegi, Kabupaten Tanggamus, Lampung">Bendungan Batu Tegi</option>
+            <option value="Wisata Bendungan Tirta Shinta, Sawo Jajar, Kabupaten Lampung Utara, Lampung">Bendungan Tirta Shinta</option>
+            <option value="Air Terjun Batu Putu, Sukadana Ham, Kota Bandar Lampung, Lampung">Air Terjun Batu Putu</option>
+            <option value="Air Terjun Kota Batu, Kota Batu, Kabupaten Lampung Tengah, Lampung">Air Terjun Kota Batu</option>
+            <option value="Air Terjun Lembah Pelangi Ulu Belu, Kota Agung, Kabupaten Tanggamus, Lampung">Air Terjun Lembah Pelangi</option>
+            <option value="Air Terjun Way Tayas, Rajabasa, Kabupaten Lampung Selatan, Lampung">Air Terjun Way Tayas</option>
+            <option value="Pantai Mutun, Sukajaya Lempasing, Pasawaran, Lampung">Pantai Mutun</option>
+            <option value="Pantai Gigi Hiu, Negeri Kelumbayan, Kabupaten Tanggamus, Lampung">Pantai Gigi Hiu</option>
+            <option value="Teluk Kiluan, Kiluan Negeri, Kabupaten Tanggamus, Lampung">Teluk Kiluan</option>
+            <option value="Mengkudu Island, Totoharjo, Kabupaten Lampung Selatan, Lampung">Pantai Mengkudu</option>
+            <option value="Pantai Dewi Mandapa Pesawaran, Gebang, Kabupaten Pesawaran, Lampung">Pantai Dwi Mandapa</option>
+            <option value="Slanik Waterpark, Karang Anyar, Kabupaten Lampung Selatan, Lampung">Slanik Water Park</option>
+            <option value="Pantai Terbaya, Terbaya, Kabupaten Tanggamus, Lampung">Pantai Terbaya</option>
+            <option value="Lembah Hijau, Sukadana Ham, Kota Bandar Lampung, Lampung">Lembah Hijau</option>
+            <option value="Pantai Pasir Putih Lampung, Rangai Tri Tunggal, Kabupaten Lampung Selatan, Lampung">Pantai Pasir Putih</option>
+            <option value="Pulau Condong">Pulau Condong</option>
+            <option value="Jalan Raya Curup 7, Marga Jaya, Kabupaten Lampung Tengah, Lampung">Curup Tujuh Marga Jaya</option>
+        </select>
+    </div>
+    
+    <div id="floating-panell">
+            <b><font  color= "white">Mode Perjalanan</b></font>
+            <select id="mode">
+              <option value="DRIVING">Naik Mobil</option>
+              <option value="BICYCLING">Naik Motor</option>
+              <option value="WALKING">Jalan Kaki</option>
+              <option value="TRANSIT">Bus</option>
+            </select>
+            </div>
+    <div id="right-panel"></div>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var directionsService = new google.maps.DirectionsService;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 7,
+          center: {lat:-4.558585, lng:105.406808}
+        });
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('right-panel'));
+
+        var control = document.getElementById('floating-panel');
+        control.style.display = 'block';
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
+
+        var onChangeHandler = function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        };
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
+        document.getElementById('mode').addEventListener('change', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        });
+        document.getElementById('start').addEventListener('change', onChangeHandler);
+        document.getElementById('end').addEventListener('change', onChangeHandler);
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        var start = document.getElementById('start').value;
+        var end = document.getElementById('end').value;
+        var selectedMode = document.getElementById('mode').value;
+        directionsService.route({
+          origin: start,
+          destination: end,
+          travelMode: google.maps.TravelMode[selectedMode]
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAICvEJEVcEqp6JxtFoP8YsvaCZ5lRjl-s&callback=initMap&language=in&region=ID"></script>
+    <divstyle="margin-bottom:20px"style="margin-bottom:20px">
+      <a href="baru.html" style="text-decoration: none; color: #fff; font-family: arial; font-size: 15px; background: #5F9EA0; margin-top:5px; padding: 10.5px 10px; border-radius: 4px;">Kembali</a>
+  </div>
+    </html> 

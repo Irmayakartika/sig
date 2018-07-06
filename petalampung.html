@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<style>
+#map {
+	float: left;
+    height: 450px;
+    width: 850px;
+}
+#header{
+	height:75px;
+	width:100%;
+	background-color: #00BFFF;
+}
+#kanan{
+	float : right;
+	height : 350px;
+	width : 480px;
+	background-color : #EEEEEE;
+}
+#footer{
+	height : 23px;
+	width :100%;
+	background-color: #00BFFF;
+}
+#wrap{
+	height : 100%;
+	width : 100%;
+	background-color:white;
+	}
+#pil{
+	height : 100px;
+	width : 480px;
+	float : right;
+	background-color: #EEEEEE;
+	}
+</style>
+<html>
+<head>
+  <title>Peta Provinsi Lampung</title>
+  <link href="lampung.css" rel="stylesheet" type="text/css">
+  </head>
+  <body><div id = wrap><center>
+	<div id=header>
+    <img src="lpg.png" width="10%" height="80px"></img>
+	</div>
+	<h1>PETA PROVINSI LAMPUNG</h1>
+	</center>
+    <div id="map">
+	</div>
+	<div id=kanan>
+	<center><img src="lampung.png" width="20%" height="20%"></img>
+	<p> Lampung adalah sebuah Provinsi paling selatan di Pulau Sumatera,
+	Indonesia, Ibukotanya terletak di Bandar Lampung.
+	Provinsi ini memilki 2 Kota dan 15 Kabupaten. 
+	Kota yang dimaksud adalah Kota Bandar Lampung dan Kota Metro. 
+	Di sebelah utara berbatasan dengan Bengkulu dan Sumatera Selatan.
+	Provinsi Lampung memiliki Pelabuhan utama bernama Pelabuhan Panjang
+	dan Pelabuhan Bakauheni serta pelabuhan nelayan seperti Pasar Ikan (Telukbetung),
+	Tarahan, dan Kalianda di Teluk Lampung. Bandar Udara utama adalah "Radin Inten II",
+	yaitu nama baru  <a href="https://id.wikipedia.org/wiki/Lampung"> Baca Selengkapnya...</a>
+	</center></p></div>
+	<div id=space>
+	</div>
+
+	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyChpSXxxqkLgqodSYN6CeVlnrCkx32LYP8",
+    authDomain: "fir-sig-6a870.firebaseapp.com",
+    databaseURL: "https://fir-sig-6a870.firebaseio.com",
+    projectId: "fir-sig-6a870",
+    storageBucket: "",
+    messagingSenderId: "680614497201"
+  };
+  firebase.initializeApp(config);
+</script>
+    <script>
+      function initMap() {
+        var uluru = {lat: -5.3636, lng: 105.2433};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>	
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbqwfq4FJ6xxI_Oho85sA-2jlWUZLI5gM&callback=initMap"
+	type="text/javascript"></script>
+	<marquee style="margin-bottom:20px"><b>Fanni Lufiana(1617051022)_Irmaya Kartika(1617051030)_Ni Putu Ayu Anesca(1617051126) </b></marquee>
+	<div id=footer>
+			<div>
+					<a href="baru.html" style="text-decoration: none; color: #fff; font-family: arial; font-size: 15px; background: #5F9EA0; margin-top:5px; padding: 10.5px 10px; border-radius: 4px;">Kembali</a>
+			</div>
+		</div>
+	</div></body>
+	
+</html>
